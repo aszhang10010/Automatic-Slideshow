@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"/>
+</head>
+<body>
+    <h2>Automatic Slideshow</h2>
+<p>Change image every 2 seconds:</p>
+
+<div class="slideshow-container">
+
+   
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 5</div>
+  <img src="img/001.jpg" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 5</div>
+  <img src="img/002.jpg" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 5</div>
+  <img src="img/003.jpg" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+    <div class="numbertext">4 / 5</div>
+    <img src="img/004.jpg" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+    <div class="numbertext">5 / 5</div>
+    <img src="img/005.jpg" style="width:100%">
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+<div class="dots" style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="curremtSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(4)"></span> 
+  <span class="dot" onclick="currentSlide(5)"></span> 
+</div>
+
+
+</div>
+<br>
+
+<script>
+    
+  var slideIndex = 0;
+  showSlides();
+
+  function plusSlides(n){
+    clearInterval(timer);
+   
+    
+  
+    showSlides(slideIndex += n-1);
+   
+    
+  }
+
+  function currentSlide(n){
+    clearInterval(timer);
+    showSlides(slideIndex = n-1);
+  }
+
+  var timer;
+
+  function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    if (slideIndex < 1) {slideIndex = slides.length}
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    timer = setTimeout(showSlides, 4000); // Change image every 2 seconds
+  }
+  </script>
+</body>
+</html>
